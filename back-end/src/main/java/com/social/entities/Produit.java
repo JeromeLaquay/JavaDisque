@@ -1,25 +1,23 @@
 package com.social.entities;
 
 
-/*******************************************************************************
- * 2017, this is the user entity class ,
- * this class implements users details of the spring security framework
- *******************************************************************************/
-
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 import org.springframework.context.annotation.Scope;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
 /**
  * Description of User.
  * 
@@ -42,6 +40,10 @@ public  class Produit{
     private String description;
     private Double prix;
     private String auteur;
+    
+    @JsonIgnore
+    @OneToMany(mappedBy="produit", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ProduitCommande> produitsCommandes;
 
     public Produit(){
     	

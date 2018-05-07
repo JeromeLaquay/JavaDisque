@@ -64,6 +64,9 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 		http.cors().and()
 		// starts authorizing configurations
 		.authorizeRequests()
+		.antMatchers("/produit/all", "/produit/{id}").permitAll()
+		.antMatchers("/produit-commande/all","/produit-commande/{id}", "/produit-commande/delete/{id}").permitAll()
+		.antMatchers("/panier/all","/panier/{id}","/produit-commande/delete/panier/{id}").permitAll()
 		// ignoring the guest's urls "
 		.antMatchers("/account/register","/account/login","/logout").permitAll()
 		// authenticate all remaining URLS
