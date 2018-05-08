@@ -54,7 +54,7 @@ public class ProduitCommandeController {
 		return produitCommandeService.find(id);	}
 	
 	@CrossOrigin
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE )
 	public ResponseEntity<String> deleteOne(@PathVariable("id") Long id) {
 		try{
 			produitCommandeService.delete(id);
@@ -65,14 +65,11 @@ public class ProduitCommandeController {
 	}
 	
 	@CrossOrigin
-	@RequestMapping(value = "/delete/panier/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = "/delete/panier/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<String> deletePanier(@PathVariable("id") Long id) {
 		try {
 			Panier panier = panierService.find(id);
-			for(ProduitCommande produit : panier.getProduitsCommandes()){
-				System.out.println("suppression de la commande "+produit.getId()+" effectuée");
-				produitCommandeService.delete(produit);
-			}
+			produitCommandeService.delete(panier.getProduitsCommandes());
 			return new ResponseEntity<String>( HttpStatus.NO_CONTENT);
 		}catch(Exception e){
 			return new ResponseEntity<String>("can't delete those basket orders", HttpStatus.NOT_FOUND);

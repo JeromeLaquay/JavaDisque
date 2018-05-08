@@ -15,6 +15,9 @@ import {routing} from "./app.routing";
 import {FacebookModule} from "ngx-facebook";
 import {UrlPermission} from "./urlPermission/url.permission";
 import { ListProductComponent } from './components/list-product/list-product.component';
+import { ProductSheetComponent } from './components/product-sheet/product-sheet.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { BasketComponent } from './components/basket/basket.component';
 
 
 @NgModule({
@@ -23,7 +26,10 @@ import { ListProductComponent } from './components/list-product/list-product.com
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    ListProductComponent
+    ListProductComponent,
+    ProductSheetComponent,
+    PaymentComponent,
+    BasketComponent
   ],
   imports: [
     BrowserModule,HttpModule,FormsModule,routing, FacebookModule.forRoot(),

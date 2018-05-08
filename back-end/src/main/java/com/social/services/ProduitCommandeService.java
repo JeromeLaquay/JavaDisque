@@ -27,11 +27,18 @@ public class ProduitCommandeService {
 	}
 	
 	public void delete(ProduitCommande produitCommande) {
+		System.out.println("entree dans le service");
 		produitCommandeRepository.delete(produitCommande);
 	}
 
 	public void delete(Long id) {
+		System.out.println("entree dans le service");
 		produitCommandeRepository.delete(id);
+	}
+	
+	public void delete(List<ProduitCommande> produits) {
+		System.out.println("entree dans le service");
+		produitCommandeRepository.delete(produits);
 	}
 
 	public ProduitCommande find(Long id) {
