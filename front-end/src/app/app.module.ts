@@ -18,6 +18,8 @@ import { ListProductComponent } from './components/list-product/list-product.com
 import { ProductSheetComponent } from './components/product-sheet/product-sheet.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { BasketComponent } from './components/basket/basket.component';
+import { ProduitCommandeService } from './services/produit-commande.service';
+import { PanierService } from './services/panier.service';
 
 
 @NgModule({
@@ -34,7 +36,7 @@ import { BasketComponent } from './components/basket/basket.component';
   imports: [
     BrowserModule,HttpModule,FormsModule,routing, FacebookModule.forRoot(),
   ],
-  providers: [AuthService,AccountService,ProduitService,UrlPermission],
+  providers: [AuthService,AccountService,ProduitService,ProduitCommandeService, PanierService,UrlPermission],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

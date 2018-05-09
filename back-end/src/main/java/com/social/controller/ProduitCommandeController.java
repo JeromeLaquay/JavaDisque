@@ -82,7 +82,7 @@ public class ProduitCommandeController {
 		produitCommandeService.save(produitCommande);	}
 	
 	@CrossOrigin
-	@RequestMapping(method = RequestMethod.POST, value = "/update", produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
+	@RequestMapping(method = RequestMethod.PUT, value = "/update", produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
 	public void update(@RequestBody ProduitCommande produitCommande) {
 		produitCommandeService.update(produitCommande);	}
 	

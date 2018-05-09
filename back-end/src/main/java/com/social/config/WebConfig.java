@@ -65,8 +65,9 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 		// starts authorizing configurations
 		.authorizeRequests()
 		.antMatchers("/produit/all", "/produit/{id}").permitAll()
-		.antMatchers("/produit-commande/all","/produit-commande/{id}", "/produit-commande/delete/{id}").permitAll()
-		.antMatchers("/panier/all","/panier/{id}","/produit-commande/delete/panier/{id}").permitAll()
+		.antMatchers("/produit-commande/all","/produit-commande/{id}", "/produit-commande/delete/{id}","/produit-commande/save","/produit-commande/update").permitAll()
+		.antMatchers("/panier/all","/panier/{id}","/produit-commande/delete/panier/{id}","/panier/save","/panier/update").permitAll()
+		
 		// ignoring the guest's urls "
 		.antMatchers("/account/register","/account/login","/logout").permitAll()
 		// authenticate all remaining URLS

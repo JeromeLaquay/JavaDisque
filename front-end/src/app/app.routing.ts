@@ -4,6 +4,9 @@ import {RegisterComponent} from "./components/register/register.component";
 import {ProfileComponent} from "./components/profile/profile.component";
 import {ListProductComponent} from "./components/list-product/list-product.component";
 import {UrlPermission} from "./urlPermission/url.permission";
+import { PaymentComponent } from './components/payment/payment.component';
+import { BasketComponent } from './components/basket/basket.component';
+import { ProductSheetComponent } from './components/product-sheet/product-sheet.component';
 
 
 const appRoutes: Routes = [
@@ -11,6 +14,9 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'list-product', component: ListProductComponent ,canActivate: [UrlPermission]},
+  { path: 'product-sheet', component: ProductSheetComponent ,canActivate: [UrlPermission]},
+  { path: 'basket', component: BasketComponent ,canActivate: [UrlPermission]},
+  { path: 'payment', component: PaymentComponent ,canActivate: [UrlPermission]},
 
   // otherwise redirect to profile
   { path: '**', redirectTo: '/login' }
