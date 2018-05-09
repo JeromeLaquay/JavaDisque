@@ -58,4 +58,10 @@ public class PanierController {
 	@RequestMapping(method = RequestMethod.PUT, value = "/update", produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
 	public void update(@RequestBody Panier panier) {
 		panierService.update(panier);	}
+	
+	@CrossOrigin
+	@RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
+	public Panier getPanierByUser(@PathVariable("id") Long id) {
+		return panierService.findByUserId(id);	}
+	
 }

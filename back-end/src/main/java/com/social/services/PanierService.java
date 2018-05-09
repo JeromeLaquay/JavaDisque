@@ -36,4 +36,8 @@ public class PanierService {
 	public List<Panier> findAll() {
 		return panierRepository.findAll();
 	}
+	
+	public Panier findByUserId(Long id) {
+		return panierRepository.findByUserId(id);
+	}
 }
