@@ -14,7 +14,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'list-product', component: ListProductComponent ,canActivate: [UrlPermission]},
-  { path: 'product-sheet', component: ProductSheetComponent ,canActivate: [UrlPermission]},
+  { path: 'product-sheet/:id', component: ProductSheetComponent ,canActivate: [UrlPermission]},
   { path: 'basket', component: BasketComponent ,canActivate: [UrlPermission]},
   { path: 'payment', component: PaymentComponent ,canActivate: [UrlPermission]},
 

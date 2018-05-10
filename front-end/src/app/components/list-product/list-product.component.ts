@@ -3,6 +3,7 @@ import { ProduitService } from '../../services/produit.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Produit } from '../../model/model.produit';
 import { User } from '../../model/model.user';
+import {MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-list-product',
@@ -19,7 +20,6 @@ export class ListProductComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router) { 
   }
-
   
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));

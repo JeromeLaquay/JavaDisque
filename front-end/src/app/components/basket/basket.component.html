@@ -1,3 +1,9 @@
-<p>
-  basket works!
-</p>
+<div class="container">
+    <div class="card card-container">
+    <ul>
+        <li *ngFor="let produitCommande of panier.produitsCommandes">
+            {{produitCommande.quantite}} {{produitCommande.produit.title}} {{produitCommande.produit.genre}}
+        </li>
+    </ul>
+    </div>
+  </div>

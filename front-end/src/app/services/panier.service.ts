@@ -25,7 +25,7 @@ export class PanierService {
     return this.http.put(AppComponent.API_URL+'/panier/update', panier);
   }
 
-  getOneByUser(id: number){
+  getOneByUser(id: string){
     return this.http.get(AppComponent.API_URL+'/panier/user/'+ id)
       .map(resp=>resp.json());
   }

@@ -20,6 +20,8 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { BasketComponent } from './components/basket/basket.component';
 import { ProduitCommandeService } from './services/produit-commande.service';
 import { PanierService } from './services/panier.service';
+import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
+
 
 
 @NgModule({
@@ -34,7 +36,7 @@ import { PanierService } from './services/panier.service';
     BasketComponent
   ],
   imports: [
-    BrowserModule,HttpModule,FormsModule,routing, FacebookModule.forRoot(),
+    BrowserModule,BrowserAnimationsModule,NoopAnimationsModule,HttpModule,FormsModule,routing, FacebookModule.forRoot(),
   ],
   providers: [AuthService,AccountService,ProduitService,ProduitCommandeService, PanierService,UrlPermission],
   bootstrap: [AppComponent]

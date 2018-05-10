@@ -1,3 +1,5 @@
-<p>
-  product-sheet works!
-</p>
+<div class="card card-container">
+    {{produit.title}} {{produit.annee_sortie}} {{produit.genre}}
+    <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Add to basket</button>
+    <a [routerLink]="['/list-product']" class="btn btn-link">Back to product list</a>
+</div>

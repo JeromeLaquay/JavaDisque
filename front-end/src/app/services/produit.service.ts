@@ -12,7 +12,7 @@ export class ProduitService {
       .map(resp=>resp.json());
   }
 
-  getOne(id: number){
+  getOne(id: string){
     return this.http.get(AppComponent.API_URL+'/produit/'+ id)
       .map(resp=>resp.json());
   }
