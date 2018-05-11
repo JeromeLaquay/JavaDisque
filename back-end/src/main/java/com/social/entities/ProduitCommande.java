@@ -22,9 +22,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Scope("session")
 public  class ProduitCommande{
 	
+//	@Id
+//	  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRODUIT_COMMANDE_SEQ")
+//	  @SequenceGenerator(sequenceName = "produit_commande_seq", initialValue = 1, allocationSize = 1, name = "PRODUIT_COMMANDE_SEQ")
 	@Id
-	  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRODUIT_COMMANDE_SEQ")
-	  @SequenceGenerator(sequenceName = "produit_commande_seq", initialValue = 1, allocationSize = 1, name = "PRODUIT_COMMANDE_SEQ")
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id ;
 	
 	@ManyToOne

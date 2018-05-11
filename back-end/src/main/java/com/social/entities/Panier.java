@@ -27,9 +27,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Scope("session")
 public  class Panier{
 	
+//	@Id
+//	  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PANIER_SEQ")
+//	  @SequenceGenerator(sequenceName = "panier_seq", initialValue = 1, allocationSize = 1, name = "PANIER_SEQ")
 	@Id
-	  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PANIER_SEQ")
-	  @SequenceGenerator(sequenceName = "panier_seq", initialValue = 1, allocationSize = 1, name = "PANIER_SEQ")
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id ;
     private Double prixTotal;
     

@@ -32,9 +32,11 @@ public  class User implements UserDetails{
 	/**
 	 * Description of the property id.
 	 */
+//	@Id
+//	  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USER_SEQ")
+//	  @SequenceGenerator(sequenceName = "user_seq", initialValue = 1, allocationSize = 1, name = "USER_SEQ")
 	@Id
-	  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USER_SEQ")
-	  @SequenceGenerator(sequenceName = "user_seq", initialValue = 1, allocationSize = 1, name = "USER_SEQ")
+	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id ;
 	/**
 	 * Description of the property email.
