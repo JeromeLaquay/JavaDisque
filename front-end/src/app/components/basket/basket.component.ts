@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { User } from '../../model/model.user';
-import { PanierService } from '../../services/panier.service';
+import { ProduitCommandeService } from '../../services/produit-commande.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Panier } from '../../model/model.panier';
+import { ProduitCommande } from '../../model/model.produit-commande';
 
 @Component({
   selector: 'app-basket',
@@ -11,11 +12,12 @@ import { Panier } from '../../model/model.panier';
   encapsulation: ViewEncapsulation.None
 })
 export class BasketComponent implements OnInit {
-  panier: Panier;
+  produitsCommandes: ProduitCommande[] = [];
   errorMessage: String;
   currentUser: User;
+  produitCommande: ProduitCommande = new ProduitCommande();
   
-  constructor(private panierService :PanierService,
+  constructor(private produitCommandeService :ProduitCommandeService,
     private route: ActivatedRoute,
     private router: Router) { 
 }
@@ -27,10 +29,23 @@ export class BasketComponent implements OnInit {
   }
 
   getPanier(){
-    this.panierService.getOneByUser(this.currentUser.id)
+    this.produitCommandeService.getByUser(this.currentUser.id)
       .subscribe(data => {
-        this.panier = data; }
+        this.produitsCommandes = data; }
       )
   }
 
+  deleteCommande(id : string){
+    this.produitCommandeService.deleteOne(id);
+  }
+
+  deleteCommande2(i : number){
+    this.produitCommande = this.produitsCommandes[i];
+    this.produitCommandeService.deleteOne(this.produitCommande.id);
+  }
+
+  deleteBasket(id : string){
+    console.log("delete basket");
+    this.produitCommandeService.deleteCommandeByBasket(this.currentUser.id);
+  }
 }

@@ -53,6 +53,12 @@ public class ProduitCommandeController {
 	public ProduitCommande getOne(@PathVariable("id") Long id) {
 		return produitCommandeService.find(id);	}
 	
+	
+	@CrossOrigin
+	@RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
+	public List<ProduitCommande> findByUser(@PathVariable("id") Long id) {
+		return produitCommandeService.findByUserId(id);	}
+	
 	@CrossOrigin
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE )
 	public ResponseEntity<String> deleteOne(@PathVariable("id") Long id) {
@@ -68,8 +74,9 @@ public class ProduitCommandeController {
 	@RequestMapping(value = "/delete/panier/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<String> deletePanier(@PathVariable("id") Long id) {
 		try {
-			Panier panier = panierService.find(id);
-			produitCommandeService.delete(panier.getProduitsCommandes());
+			System.out.println("delete basket");
+			List<ProduitCommande> commandes = produitCommandeService.findByUserId(id);
+			produitCommandeService.delete(commandes);
 			return new ResponseEntity<String>( HttpStatus.NO_CONTENT);
 		}catch(Exception e){
 			return new ResponseEntity<String>("can't delete those basket orders", HttpStatus.NOT_FOUND);
@@ -79,6 +86,7 @@ public class ProduitCommandeController {
 	@CrossOrigin
 	@RequestMapping(method = RequestMethod.POST, value = "/save", produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
 	public void save(@RequestBody ProduitCommande produitCommande) {
+		System.out.println("save commande : "+ produitCommande.getPanier().getId()+"  "+produitCommande.getProduit().getId()+"  "+produitCommande.getQuantite());
 		produitCommandeService.save(produitCommande);	}
 	
 	@CrossOrigin

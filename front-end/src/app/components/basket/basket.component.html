@@ -1,9 +1,11 @@
 <div class="container">
     <div class="card card-container">
     <ul>
-        <li *ngFor="let produitCommande of panier.produitsCommandes">
-            {{produitCommande.quantite}} {{produitCommande.produit.title}} {{produitCommande.produit.genre}}
+        <li *ngFor="let commande of produitsCommandes; let i = index">
+            {{commande.quantite}} {{commande.produit.title}} {{commande.produit.genre}}  {{commande.id}} {{i}}
+            
         </li>
     </ul>
+    <button (click)="deleteBasket()" >Delete all</button>
     </div>
   </div>

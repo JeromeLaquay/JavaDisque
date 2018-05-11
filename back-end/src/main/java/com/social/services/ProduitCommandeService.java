@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.social.dao.ProduitCommandeRepository;
-import com.social.entities.Panier;
 import com.social.entities.ProduitCommande;
 /** 
  * @author kamal berriga
@@ -49,5 +48,8 @@ public class ProduitCommandeService {
 		return produitCommandeRepository.findAll();
 	}
 	
+	public List<ProduitCommande> findByUserId(Long id) {
+		return produitCommandeRepository.findByUserId(id);
+	}
 	
 }

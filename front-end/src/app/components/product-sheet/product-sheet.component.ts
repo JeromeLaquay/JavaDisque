@@ -7,6 +7,7 @@ import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { ProduitCommande } from '../../model/model.produit-commande';
 import { User } from '../../model/model.user';
+import { Panier } from '../../model/model.panier';
 
 @Component({
   selector: 'app-product-sheet',
@@ -15,11 +16,11 @@ import { User } from '../../model/model.user';
   encapsulation: ViewEncapsulation.None
 })
 export class ProductSheetComponent implements OnInit {
-  produit: Produit;
-  produitCommande: ProduitCommande;
+  produit: Produit = new Produit();
+  produitCommande: ProduitCommande = new ProduitCommande();
   errorMessage: string;
   id: number;
-  currentUser = User;
+  currentUser: User;
 
   constructor(private produitService :ProduitService,
     private produitCommandeService :ProduitCommandeService,
@@ -29,26 +30,29 @@ export class ProductSheetComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    let id = this.route.snapshot.paramMap.get('id');
-    this.getProduct(id);
+    this.produitCommande.panier = new Panier();
+    this.produitCommande.produit = new Produit();
+    this.getProduct();
+    this.getPanier();
+    this.produitCommande.quantite = 1;
   }
 
-  getProduct(id: string){
+  getProduct(){
+    let id = this.route.snapshot.paramMap.get('id');
     this.produitService.getOne(id)
       .subscribe(data => {
-        this.produit = data; }
+        this.produit = data;
+        this.produitCommande.produit = data;
+        console.log(this.produit.id + "  +++++");
+       }
       )
   }
 
   addToBasket(){
-    this.produitCommande.produit = this.produit;
-    this.produitCommande.quantite = 1;
-    this.getPanier();
-    this.produitCommandeService.save(this.produitCommande)
-      .subscribe(err=>{
-        this.errorMessage="error :  ";
-        }
-      )
+    console.log("methode lancee");
+    console.log(this.produitCommande.produit.title + "  "+ this.produitCommande.panier.id+"  "+this.produitCommande.quantite + "!!!!!!!!!");
+    this.produitCommandeService.save(this.produitCommande);
+    console.log("fait");
   }
 
   getPanier(){

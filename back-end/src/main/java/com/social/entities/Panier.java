@@ -33,6 +33,7 @@ public  class Panier{
 	private Long id ;
     private Double prixTotal;
     
+    @JsonIgnore
     @OneToMany(mappedBy="panier", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ProduitCommande> produitsCommandes;
     

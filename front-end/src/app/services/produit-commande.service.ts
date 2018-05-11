@@ -17,19 +17,26 @@ export class ProduitCommandeService {
       .map(resp=>resp.json());
   }
 
-  deleteOne(id: number){
+  getByUser(id: string){
+    return this.http.get(AppComponent.API_URL+'/produit-commande/user/'+ id)
+      .map(resp=>resp.json());
+  }
+
+  deleteOne(id: string){
     return this.http.delete(AppComponent.API_URL+'/produit-commande/delete/'+ id);     
   }
 
-  deleteCommandeByBasket(id: number){
+  deleteCommandeByBasket(id: string){
     return this.http.delete(AppComponent.API_URL+'/produit-commande/delete/panier/'+ id);     
   }
 
   save(produitCommande: ProduitCommande){
-    return this.http.post(AppComponent.API_URL+'/produit-commande/save', produitCommande);
+    console.log(JSON.stringify(produitCommande));
+    this.http.post(AppComponent.API_URL+'/produit-commande/save', JSON.stringify(produitCommande));
+    console.log("faite !!");
   }
 
   update(produitCommande: ProduitCommande){
-    return this.http.put(AppComponent.API_URL+'/produit-commande/update', produitCommande);
+    return this.http.put(AppComponent.API_URL+'/produit-commande/update', JSON.stringify(produitCommande));
   }
 }

@@ -30,7 +30,6 @@ public  class ProduitCommande{
 	@ManyToOne
 	private Produit produit ;
 	
-	@JsonIgnore
 	@ManyToOne
 	private Panier panier ;
 	
