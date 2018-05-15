@@ -28,11 +28,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Scope("session")
 public  class Produit{
 	
-//	@Id
-//	  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRODUIT_SEQ")
-//	  @SequenceGenerator(sequenceName = "produit_seq", initialValue = 1, allocationSize = 1, name = "PRODUIT_SEQ")
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRODUIT_SEQ")
+	  @SequenceGenerator(sequenceName = "produit_seq", initialValue = 1, allocationSize = 1, name = "PRODUIT_SEQ")
+//	@Id
+//	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id ;
 	@Column(unique = true)
 	private String title ;

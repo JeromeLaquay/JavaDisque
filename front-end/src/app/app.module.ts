@@ -33,7 +33,7 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-b
     ListProductComponent,
     ProductSheetComponent,
     PaymentComponent,
-    BasketComponent
+    BasketComponent,
   ],
   imports: [
     BrowserModule,BrowserAnimationsModule,NoopAnimationsModule,HttpModule,FormsModule,routing, FacebookModule.forRoot(),

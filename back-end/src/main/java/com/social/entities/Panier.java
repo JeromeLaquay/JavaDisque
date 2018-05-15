@@ -17,23 +17,18 @@ import javax.persistence.Table;
 import org.springframework.context.annotation.Scope;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-/**
- * Description of User.
- * 
- * @author kamal berriga
- */
+
 @Entity
 @Table(name="Panier")
 @Scope("session")
 public  class Panier{
 	
-//	@Id
-//	  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PANIER_SEQ")
-//	  @SequenceGenerator(sequenceName = "panier_seq", initialValue = 1, allocationSize = 1, name = "PANIER_SEQ")
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PANIER_SEQ")
+	  @SequenceGenerator(sequenceName = "panier_seq", initialValue = 1, allocationSize = 1, name = "PANIER_SEQ")
+//	@Id
+//	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id ;
-    private Double prixTotal;
     
     @JsonIgnore
     @OneToMany(mappedBy="panier", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -46,10 +41,9 @@ public  class Panier{
     	
     }
 
-	public Panier(Long id, Double prixTotal, List<ProduitCommande> produitsCommandes, User user) {
+	public Panier(Long id, List<ProduitCommande> produitsCommandes, User user) {
 		super();
 		this.id = id;
-		this.prixTotal = prixTotal;
 		this.produitsCommandes = produitsCommandes;
 		this.user = user;
 	}
@@ -60,14 +54,6 @@ public  class Panier{
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Double getPrixTotal() {
-		return prixTotal;
-	}
-
-	public void setPrixTotal(Double prixTotal) {
-		this.prixTotal = prixTotal;
 	}
 
 	public List<ProduitCommande> getProduitsCommandes() {

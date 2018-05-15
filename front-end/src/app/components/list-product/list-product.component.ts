@@ -4,12 +4,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Produit } from '../../model/model.produit';
 import { User } from '../../model/model.user';
 import {MatTableDataSource} from '@angular/material';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-list-product',
   templateUrl: './list-product.component.html',
   styleUrls: ['./list-product.component.css'],
-  encapsulation: ViewEncapsulation.None
 })
 export class ListProductComponent implements OnInit {
   produits: Produit[] = [];
@@ -17,6 +17,7 @@ export class ListProductComponent implements OnInit {
   currentUser: User;
 
   constructor(private produitService :ProduitService,
+              private authService :AuthService,
               private route: ActivatedRoute,
               private router: Router) { 
   }
@@ -31,5 +32,16 @@ export class ListProductComponent implements OnInit {
       .subscribe(data => {
         this.produits = data; }
       )
+  }
+
+  logOut() {
+    this.authService.logOut()
+      .subscribe(
+        data => {
+          this.router.navigate(['/login']);
+        },
+        error => {
+
+        });
   }
 }

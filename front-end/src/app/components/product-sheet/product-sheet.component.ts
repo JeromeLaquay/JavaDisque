@@ -8,12 +8,12 @@ import { switchMap } from 'rxjs/operators';
 import { ProduitCommande } from '../../model/model.produit-commande';
 import { User } from '../../model/model.user';
 import { Panier } from '../../model/model.panier';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-product-sheet',
   templateUrl: './product-sheet.component.html',
-  styleUrls: ['./product-sheet.component.css'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./product-sheet.component.css']
 })
 export class ProductSheetComponent implements OnInit {
   produit: Produit = new Produit();
@@ -21,10 +21,12 @@ export class ProductSheetComponent implements OnInit {
   errorMessage: string;
   id: number;
   currentUser: User;
+  image :string = "https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg";
 
   constructor(private produitService :ProduitService,
     private produitCommandeService :ProduitCommandeService,
     private panierService :PanierService,
+    private authService :AuthService,
     private route: ActivatedRoute,
     private router: Router) { }
 
@@ -43,16 +45,12 @@ export class ProductSheetComponent implements OnInit {
       .subscribe(data => {
         this.produit = data;
         this.produitCommande.produit = data;
-        console.log(this.produit.id + "  +++++");
        }
       )
   }
 
   addToBasket(){
-    console.log("methode lancee");
-    console.log(this.produitCommande.produit.title + "  "+ this.produitCommande.panier.id+"  "+this.produitCommande.quantite + "!!!!!!!!!");
     this.produitCommandeService.save(this.produitCommande);
-    console.log("fait");
   }
 
   getPanier(){
@@ -60,5 +58,16 @@ export class ProductSheetComponent implements OnInit {
       .subscribe(data => {
         this.produitCommande.panier = data; }
       )
+  }
+
+  logOut() {
+    this.authService.logOut()
+      .subscribe(
+        data => {
+          this.router.navigate(['/login']);
+        },
+        error => {
+
+        });
   }
 }

@@ -11,22 +11,16 @@ import javax.persistence.Table;
 
 import org.springframework.context.annotation.Scope;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-/**
- * Description of User.
- * 
- * @author kamal berriga
- */
 @Entity
 @Table(name="ProduitCommande")
 @Scope("session")
 public  class ProduitCommande{
 	
-//	@Id
-//	  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRODUIT_COMMANDE_SEQ")
-//	  @SequenceGenerator(sequenceName = "produit_commande_seq", initialValue = 1, allocationSize = 1, name = "PRODUIT_COMMANDE_SEQ")
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRODUIT_COMMANDE_SEQ")
+	  @SequenceGenerator(sequenceName = "produit_commande_seq", initialValue = 1, allocationSize = 1, name = "PRODUIT_COMMANDE_SEQ")
+//	@Id
+//	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id ;
 	
 	@ManyToOne
