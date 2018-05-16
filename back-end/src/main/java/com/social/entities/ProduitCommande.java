@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -12,22 +13,20 @@ import javax.persistence.Table;
 import org.springframework.context.annotation.Scope;
 
 @Entity
-@Table(name="ProduitCommande")
+@Table(name="produit_commande")
 @Scope("session")
 public  class ProduitCommande{
 	
 	@Id
-	  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRODUIT_COMMANDE_SEQ")
-	  @SequenceGenerator(sequenceName = "produit_commande_seq", initialValue = 1, allocationSize = 1, name = "PRODUIT_COMMANDE_SEQ")
-//	@Id
-//	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id ;
 	
 	@ManyToOne
 	private Produit produit ;
 	
 	@ManyToOne
-	private Panier panier ;
+    @JoinColumn(name="panier_id", nullable = false)
+    private Panier panier;
 	
     private int quantite;
 

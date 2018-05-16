@@ -21,17 +21,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
-@Table(name="User2")
+@Table(name="user")
 @Scope("session")
 public  class User implements UserDetails{
 	private static final long serialVersionUID = 1L;
 
 	public static enum Role{ USER }
+	
 	@Id
-	  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USER_SEQ")
-	  @SequenceGenerator(sequenceName = "user_seq", initialValue = 1, allocationSize = 1, name = "USER_SEQ")
-//	@Id
-//	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id ;
 	/**
 	 * Description of the property email.

@@ -11,6 +11,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -29,10 +31,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public  class Produit{
 	
 	@Id
-	  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRODUIT_SEQ")
-	  @SequenceGenerator(sequenceName = "produit_seq", initialValue = 1, allocationSize = 1, name = "PRODUIT_SEQ")
-//	@Id
-//	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id ;
 	@Column(unique = true)
 	private String title ;
@@ -44,7 +43,7 @@ public  class Produit{
     private String auteur;
     
     @JsonIgnore
-    @OneToMany(mappedBy="produit", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="produit")
     private List<ProduitCommande> produitsCommandes;
 
     public Produit(){

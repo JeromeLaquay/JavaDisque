@@ -19,19 +19,16 @@ import org.springframework.context.annotation.Scope;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="Panier")
+@Table(name="panier")
 @Scope("session")
 public  class Panier{
 	
 	@Id
-	  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PANIER_SEQ")
-	  @SequenceGenerator(sequenceName = "panier_seq", initialValue = 1, allocationSize = 1, name = "PANIER_SEQ")
-//	@Id
-//	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id ;
     
     @JsonIgnore
-    @OneToMany(mappedBy="panier", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="panier")
     private List<ProduitCommande> produitsCommandes;
     
     @OneToOne

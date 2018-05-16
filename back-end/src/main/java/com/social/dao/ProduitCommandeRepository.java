@@ -9,10 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import com.social.entities.Panier;
 import com.social.entities.ProduitCommande;
-/** 
- * @author kamal berriga
- *
- */
 /* this the user  Repository interface  */ 
 @Repository
 public interface ProduitCommandeRepository extends JpaRepository<ProduitCommande, Long> {
