@@ -22,7 +22,7 @@
             <tbody>
                 <tr *ngFor="let commande of produitsCommandes; let i = index">
                     <td>{{commande.produit.title}}</td>
-                    <td>{{commande.produit.prix}}</td>
+                    <td>{{commande.produit.prix}} €</td>
                     <td>{{commande.quantite}}</td>
                     <td>
                         <button (click)="deleteCommande(i)">Supprimer</button>

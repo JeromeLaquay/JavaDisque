@@ -23,12 +23,12 @@
             <tbody>
                 <tr *ngFor="let commande of produitsCommandes; let i = index">
                     <td>{{commande.produit.title}}</td>
-                    <td>{{commande.produit.prix}}</td>
+                    <td>{{commande.produit.prix}} €</td>
                     <td>{{commande.quantite}}</td>
                 </tr>
             </tbody>
         </table>
-        Prix Total : {{prixTotal}}
+        Prix Total : {{prixTotal}} €
         <br>
         <h4>Informations Client :</h4>
         Nom : {{currentUser.fullName}}
@@ -38,6 +38,8 @@
         Addresse : <input type="text">
         <br>
         Code postal : <input type="text">
+        <br>
+        <button>Confirmer la commande</button>
 
     </div>
 </div>
