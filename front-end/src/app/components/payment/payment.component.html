@@ -1,7 +1,45 @@
-<nav  class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in" (click)="logOut()"></span> LogOut</a></li>
+            <li>
+                <a href="#">
+                    <span class="glyphicon glyphicon-log-in" (click)="logOut()"></span> Se déconnecter</a>
+            </li>
         </ul>
     </div>
 </nav>
+
+<div class="container">
+    <div class="jumbotron">
+        <h3>Récapitulatif</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th> Titre</th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let commande of produitsCommandes; let i = index">
+                    <td>{{commande.produit.title}}</td>
+                    <td>{{commande.produit.prix}} €</td>
+                    <td>{{commande.quantite}}</td>
+                </tr>
+            </tbody>
+        </table>
+        Prix Total : {{prixTotal}} €
+        <br>
+        <h4>Informations Client :</h4>
+        Nom : {{currentUser.fullName}}
+        <br>
+        Email : {{currentUser.username}}
+        <br>
+        Addresse : <input type="text">
+        <br>
+        Code postal : <input type="text">
+        <br>
+        <button>Confirmer la commande</button>
+
+    </div>
+</div>

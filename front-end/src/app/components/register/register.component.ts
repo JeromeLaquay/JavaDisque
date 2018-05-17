@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['/login']);
       }, err => {
         console.log(err);
-        this.errorMessage = "username already exist";
+        this.errorMessage = "Le nom d'utilisateur existe déjà";
       }
     )
   }

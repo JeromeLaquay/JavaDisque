@@ -67,7 +67,7 @@ export class ProductSheetComponent implements OnInit {
     }else{
       this.produitCommandeService.save(this.produitCommande);
     }
-    
+    this.router.navigate(['/basket']);
   }
 
   getPanier(){

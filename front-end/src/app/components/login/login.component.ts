@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
       .subscribe(data=>{
         this.router.navigate(['/list-product']);
         },err=>{
-        this.errorMessage="error :  Username or password is incorrect";
+        this.errorMessage="Erreur :  Username ou Mot de passe incorrect";
         }
       )
   }
