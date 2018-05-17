@@ -30,17 +30,12 @@
                 </tr>
             </tbody>
         </table>
-        <ul>
-            <li>Prix Total : {{prixTotal}}</li>
-            <li>
-                <button (click)="deleteBasket()">Tout supprimer</button>
-            </li>
-            <li>
-                <a [routerLink]="['/list-product']" class="btn btn-link">Continuer le shopping</a>
-            </li>
-            <li>
-                <a [routerLink]="['/payment']" class="btn btn-link">Effectuer la commande</a>
-            </li>
-        </ul>
+        Prix Total : {{prixTotal}}
+        <br>
+        <button (click)="deleteBasket()">Tout supprimer</button>
+        <br>
+        <a [routerLink]="['/list-product']" class="btn btn-link">Continuer le shopping</a>
+        <br>
+        <a [routerLink]="['/payment']" class="btn btn-link">Effectuer la commande</a>
     </div>
 </div>
