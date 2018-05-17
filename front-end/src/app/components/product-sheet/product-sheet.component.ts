@@ -13,7 +13,7 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-product-sheet',
   templateUrl: './product-sheet.component.html',
-  styleUrls: ['./product-sheet.component.css']
+  styleUrls: ['../../app.component.css']
 })
 export class ProductSheetComponent implements OnInit {
   produit: Produit = new Produit();

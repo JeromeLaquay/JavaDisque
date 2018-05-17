@@ -8,7 +8,7 @@ import { User } from '../../model/model.user';
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
-  styleUrls: ['./payment.component.css']
+  styleUrls: ['../../app.component.css']
 })
 export class PaymentComponent implements OnInit {
   produitsCommandes: ProduitCommande[] = [];
