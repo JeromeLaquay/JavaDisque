@@ -18,6 +18,7 @@ import { AuthService } from '../../services/auth.service';
 export class ProductSheetComponent implements OnInit {
   produit: Produit = new Produit();
   produitCommande: ProduitCommande = new ProduitCommande();
+  produitsCommandes: ProduitCommande[] = [];
   errorMessage: string;
   id: number;
   currentUser: User;
@@ -36,6 +37,7 @@ export class ProductSheetComponent implements OnInit {
     this.produitCommande.produit = new Produit();
     this.getProduct();
     this.getPanier();
+    this.getProduitsCommandes();
     this.produitCommande.quantite = 1;
   }
 
@@ -49,8 +51,23 @@ export class ProductSheetComponent implements OnInit {
       )
   }
 
-  addToBasket(){
-    this.produitCommandeService.save(this.produitCommande);
+  addToBasket() {
+    var already = false;
+    var toUpdate;
+
+    for(let prodCom of this.produitsCommandes){
+      if (prodCom.produit.id == this.produitCommande.produit.id){
+        already = true;
+        prodCom.quantite++;
+        toUpdate = prodCom;
+      }
+    }
+    if (already){
+      this.produitCommandeService.update(toUpdate);
+    }else{
+      this.produitCommandeService.save(this.produitCommande);
+    }
+    
   }
 
   getPanier(){
@@ -58,6 +75,14 @@ export class ProductSheetComponent implements OnInit {
       .subscribe(data => {
         this.produitCommande.panier = data; }
       )
+  }
+
+  getProduitsCommandes(){
+    this.produitCommandeService.getByUser(this.currentUser.id)
+      .subscribe(data => {
+        this.produitsCommandes = data;} 
+      )
+      
   }
 
   logOut() {

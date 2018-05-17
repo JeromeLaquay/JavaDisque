@@ -42,7 +42,7 @@ export class ProduitCommandeService {
   }
 
   update(produitCommande: ProduitCommande){
-    this.http.put(AppComponent.API_URL+'/produit-commande/update', JSON.stringify(produitCommande))
+    this.http.put(AppComponent.API_URL+'/produit-commande/update', produitCommande)
     .subscribe(res => {console.log(res);},
               err => {console.log("Error occured");}
     );

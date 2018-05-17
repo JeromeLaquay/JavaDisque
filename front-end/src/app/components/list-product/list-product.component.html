@@ -11,10 +11,10 @@
     <table class="table">
         <thead>
             <tr>
-                <th>title</th>
-                <th>auteur</th>
-                <th>genre</th>
-                <th>Plus</th>
+                <th>Titre</th>
+                <th>Auteur</th>
+                <th>Genre</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -22,7 +22,7 @@
                 <td>{{produit.title}}</td>
                 <td>{{produit.auteur}}</td>
                 <td>{{produit.genre}}</td>
-                <td><a routerLink="/product-sheet/{{produit.id}}" routerLinkActive="active">+</a></td>
+                <td><a routerLink="/product-sheet/{{produit.id}}" routerLinkActive="active">Details</a></td>
             </tr>
         </tbody>
     </table>

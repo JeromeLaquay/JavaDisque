@@ -17,10 +17,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import com.social.services.AppUserDetailsService;
 
-/**
- * @author kamal berriga
- *
- */
 @Configurable
 @EnableWebSecurity
 // Modifying or overriding the default spring boot security.

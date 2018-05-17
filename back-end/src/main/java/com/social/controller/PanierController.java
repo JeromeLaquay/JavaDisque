@@ -52,6 +52,7 @@ public class PanierController {
 	@CrossOrigin
 	@RequestMapping(method = RequestMethod.POST, value = "/save", produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
 	public void save(@RequestBody Panier panier) {
+		System.out.println("Save panier : " + panier.getId());
 		panierService.save(panier);	}
 	
 	@CrossOrigin
