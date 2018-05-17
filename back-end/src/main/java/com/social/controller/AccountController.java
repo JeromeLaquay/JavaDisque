@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.social.services.PanierService;
 import com.social.services.UserService;
 import com.social.util.CustomErrorType;
+import com.social.entities.Panier;
 import com.social.entities.User;
 /** 
  * @author kamal berriga
@@ -28,6 +30,9 @@ public class AccountController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private PanierService panierService;
 
 	// request method to create a new account by a guest
 	@CrossOrigin
@@ -40,8 +45,12 @@ public class AccountController {
 					HttpStatus.CONFLICT);
 		}
 		newUser.setRole("USER");
+		userService.save(newUser);
+		Panier panier = new Panier();
+		panier.setUser(newUser);
+		panierService.save(panier);
 		
-		return new ResponseEntity<User>(userService.save(newUser), HttpStatus.CREATED);
+		return new ResponseEntity<User>(newUser, HttpStatus.CREATED);
 	}
 
 	// this is the login api/service
