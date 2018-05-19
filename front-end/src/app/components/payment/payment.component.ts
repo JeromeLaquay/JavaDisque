@@ -55,4 +55,11 @@ export class PaymentComponent implements OnInit {
     }
   }
 
+  confirmerCommande(){
+    this.produitCommandeService.deleteCommandeByBasket(this.currentUser.id).subscribe(
+      res => {this.router.navigate(['/basket']);},
+      err => {console.log("Error occured");}
+    );
+  }
+
 }
